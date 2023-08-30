@@ -1,0 +1,56 @@
+Websocketi/o
+--------------------
+helps to send data from client to server and also updates from serve to client(data exchange)
+client and server makes two way connection
+
+http long polling( refer it) , its important
+
+ws and wss 
+==========
+web socket and websocket secured protocol.
+
+
+
+create a nodeServer
+====================
+create a folder named as nodeServer
+navigate to that folder usind cd nodeServer
+npm init  and   add all the details
+
+
+then install socket.io  using the command npm i socket.io
+
+now will create index.js thats a entry point and its our node sever
+
+
+io.on is the instance of socket.io
+
+io.on handle all the connection. socket.on is to handle the particular connection
+
+when user has joined im appen ding user id into the users object.
+
+coket.broadcast.emit --> is there to inform others when some one joined except himself, 
+whatever the events that im created using .on method are userdefined events and you can create whatever you want.
+
+
+nodeServer is different and this website is different, Im connecting this website to the nodeServer
+
+<script src="http://localhost:8000/socket.io/socket.io.js"></script> with this client and server are joined.
+above code is of server 
+
+I have written socket.on in index js,    and im running that in client.js by calling socket.emit()
+
+
+ socket.on("send", message => {
+    users[socket.id] = myusername;
+    socket.broadcast.emit("recieve", {
+      message: message,
+      username: users[socket.id],
+    });
+  });
+
+  this piece of code helps to broadcast the message to all the user
+
+
+
+  defer :  when we use defer the script will get downlload in the background and it will be run when dom loads.
